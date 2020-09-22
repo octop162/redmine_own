@@ -6,10 +6,10 @@ services:
     container_name: redmine_container
     environment:
       - REDMINE_DB_POSTGRES=db
-      - REDMINE_DB_USERNAME="{$REDMINE_DB_USERNAME}"
-      - REDMINE_DB_PASSWORD="{$REDMINE_DB_PASSWORD}"
+      - REDMINE_DB_USERNAME=${REDMINE_DB_USERNAME}
+      - REDMINE_DB_PASSWORD=${REDMINE_DB_PASSWORD}
       - REDMINE_PLUGINS_MIGRATE=true
-      - VIRTUAL_HOST="{$VIRTUAL_HOST}"
+      - VIRTUAL_HOST=${VIRTUAL_HOST}
     expose:
       - 3000
     ports:
@@ -22,7 +22,7 @@ services:
     image: postgres:10
     restart: always
     environment:
-      - POSTGRES_USER="{$REDMINE_DB_USERNAME}"
-      - POSTGRES_PASSWORD="{$REDMINE_DB_PASSWORD}"
+      - POSTGRES_USER=${REDMINE_DB_USERNAME}
+      - POSTGRES_PASSWORD=${REDMINE_DB_PASSWORD}
     volumes:
       - ./postgres/data:/var/lib/postgresql/data
