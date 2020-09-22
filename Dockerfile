@@ -1,35 +1,31 @@
 FROM redmine:4.0
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-        antiword \
-        catdoc \
-        catdvi \
-        djview \
-        djview3 \
-        gcc \
-        gzip \
-        libemail-outlook-message-perl \
-        libwpd-tools \
-        libwps-tools \
-        libxapian-dev \
-        make \
-        poppler-utils \
-        ruby-xapian \
-        uuid \
-        uuid-dev \
-        unrtf \
-        unzip \
-        xapian-omega \
-        xpdf \
-        xz-utils \
-;
-
-RUN apt-get install xapian-omega ruby-xapian \
-      libxapian-dev xpdf poppler-utils \
-      antiword unzip \
-      catdoc libwpd-tools \
-      libwps-tools gzip unrtf catdvi djview djview3 \ 
-      uuid uuid-dev xz-utils libemail-outlook-message-perl \
+      antiword\
+      catdoc \
+      catdvi \
+      djview \
+      djview3 \ 
+      gcc \
+      graphviz \
+      gzip \
+      libemail-outlook-message-perl \
+      libwpd-tools \
+      libwps-tools \
+      libxapian-dev \
+      make \
+      antiword \
+      poppler-utils \
+      ruby-xapian \
+      unrtf \
+      unzip \
+      uuid \
+      uuid-dev \
+      xapian-omega \
+      xpdf \
+      xz-utils \
+      default-jre \
+      wget\
 ;
 
 # plugin
@@ -45,8 +41,6 @@ RUN git clone https://github.com/nti-ufpe/circle public/themes/circle
 
 # plantuml
 RUN mkdir -p /usr/share/man/man1
-RUN apt-get install -y default-jre 
-RUN apt-get install wget
 RUN mkdir -p /share
 RUN wget https://sourceforge.net/projects/plantuml/files/plantuml.jar -O /share/plantuml.jar
 COPY plantuml.sh /usr/bin/plantuml
