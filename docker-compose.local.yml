@@ -12,6 +12,8 @@ services:
       - VIRTUAL_HOST="{$VIRTUAL_HOST}"
     expose:
       - 3000
+    ports:
+      - 3000:3000
     volumes:
       - ./redmine/files:/usr/src/redmine/files
     links:
@@ -24,15 +26,3 @@ services:
       - POSTGRES_PASSWORD="{$REDMINE_DB_PASSWORD}"
     volumes:
       - ./postgres/data:/var/lib/postgresql/data
-  https-portal:
-    image: steveltn/https-portal:latest
-    ports:
-      - '80:80'
-      - '443:443'
-    links:
-      - redmine
-    restart: always
-    environment:
-      DOMAINS: "{$DOMAINS}"
-      STAGE: 'production'
-      ORCE_RENEW: 'true'
