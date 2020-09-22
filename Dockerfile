@@ -14,7 +14,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       libwps-tools \
       libxapian-dev \
       make \
-      antiword \
       poppler-utils \
       ruby-xapian \
       unrtf \
