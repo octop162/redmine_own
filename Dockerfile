@@ -23,7 +23,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       xapian-omega \
       xpdf \
       xz-utils \
-      default-jre \
       wget \
 ;
 
@@ -31,7 +30,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN mkdir -p /usr/share/man/man1
 RUN mkdir -p /share
 # /manディレクトリを事前に作成する必要がある
-RUN apt-get install -y default-jre
+RUN apt-get install -y --no-install-recommends default-jre
 RUN wget https://sourceforge.net/projects/plantuml/files/plantuml.jar -O /share/plantuml.jar
 COPY plantuml.sh /usr/bin/plantuml
 RUN chmod +x /usr/bin/plantuml
